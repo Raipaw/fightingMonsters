@@ -5,6 +5,7 @@ package Game;
  * @author Phil
  */
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -14,6 +15,8 @@ public class Player {
     private String imagePath = "playerTest.png";
     private int dx;
     private int dy;
+    private int width;
+    private int height;
     private int x;
     private int y;
     private Image image;
@@ -21,6 +24,8 @@ public class Player {
     public Player() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(imagePath));
         image = ii.getImage();
+        width = image.getWidth(null);
+        height = image.getHeight(null);
         x = 40;
         y = 60;
     }
@@ -36,6 +41,10 @@ public class Player {
 
     public int getY() {
         return y;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
     }
 
     public Image getImage() {
